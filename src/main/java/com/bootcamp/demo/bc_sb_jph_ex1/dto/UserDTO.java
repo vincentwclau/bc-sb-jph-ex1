@@ -1,20 +1,29 @@
 package com.bootcamp.demo.bc_sb_jph_ex1.dto;
 
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public class UserDTO {
-  private int id;
+@Builder
+@AllArgsConstructor
+public class UserDto {
+  private Long id;
   private String name;
   private String username;
   private String email;
   private Address address;
+  private String phone;
+  private String website;
+  private Company company;
   @Setter
-  List<PostDTO> posts;
+  List<PostDto> posts;
 
   @Getter
+  @Builder
+  @AllArgsConstructor
   public static class Address {
     private String street;
     private String suite;
@@ -23,6 +32,7 @@ public class UserDTO {
     private Geo geo;
 
     @Getter
+    @Builder
     public static class Geo {
       private String lat;
       private String lng;
@@ -30,16 +40,29 @@ public class UserDTO {
   }
 
   @Getter
-  public static class PostDTO {
-    private int id;
+  @Builder
+  @AllArgsConstructor
+  public static class Company {
+    private String name;
+    private String catchPhrase;
+    private String bs;
+  }
+
+  @Getter
+  @Builder
+  @AllArgsConstructor
+  public static class PostDto {
+    private Long id;
     private String title;
     private String body;
     @Setter
-    List<CommentDTO> comments;
+    List<CommentDto> comments;
 
     @Getter
-    public class CommentDTO {
-      private int id;
+    @Builder
+    @AllArgsConstructor
+    public static class CommentDto {
+      private Long id;
       private String name;
       private String email;
       private String body;

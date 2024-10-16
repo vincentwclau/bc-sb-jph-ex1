@@ -44,14 +44,10 @@ public class JPHServiceImpl implements JPHService {
         .endpoint(this.usersEndpoint) //
         .build() //
         .toUriString();
-
-    System.out.println("url=" + url);
-
     try {
-      return Arrays
-          .asList(this.restTemplate.getForObject(url, UserDTO[].class));
+      return Arrays.asList(this.restTemplate.getForObject(url, UserDTO[].class));
     } catch (RestClientException e) {
-      throw new BusinessException(ErrorCode.REST_CLIENT_EX, this.errorMsg);
+      throw BusinessException.of(ErrorCode.REST_CLIENT_EX, this.errorMsg);
     }
   }
 
@@ -63,14 +59,10 @@ public class JPHServiceImpl implements JPHService {
         .endpoint(this.postsEndpoint) //
         .build() //
         .toUriString();
-
-    System.out.println("url=" + url);
-
     try {
-      return Arrays
-          .asList(this.restTemplate.getForObject(url, PostDTO[].class));
+      return Arrays.asList(this.restTemplate.getForObject(url, PostDTO[].class));
     } catch (RestClientException e) {
-      throw new BusinessException(ErrorCode.REST_CLIENT_EX, this.errorMsg);
+      throw BusinessException.of(ErrorCode.REST_CLIENT_EX, this.errorMsg);
     }
   }
 
@@ -82,14 +74,10 @@ public class JPHServiceImpl implements JPHService {
         .endpoint(this.commentsEndpoint) //
         .build() //
         .toUriString();
-
-    System.out.println("url=" + url);
-
     try {
-      return Arrays
-          .asList(this.restTemplate.getForObject(url, CommentDTO[].class));
+      return Arrays.asList(this.restTemplate.getForObject(url, CommentDTO[].class));
     } catch (RestClientException e) {
-      throw new BusinessException(ErrorCode.REST_CLIENT_EX, this.errorMsg);
+      throw BusinessException.of(ErrorCode.REST_CLIENT_EX, this.errorMsg);
     }
   }
 }
